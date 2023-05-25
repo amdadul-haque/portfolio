@@ -2,9 +2,14 @@ import SocialMediaIcons from "../components/SocialMediaIcons";
 import useMediaQuery from "../hooks/useMediaQuery";
 import { motion } from "framer-motion";
 import AnchorLink from "react-anchor-link-smooth-scroll";
+import { BsWhatsapp } from "react-icons/bs";
+import { HiOutlineMail } from "react-icons/hi";
+import { IoMailOpenOutline } from "react-icons/io5";
 
 const Landing = ({ setSelectedPage }) => {
   const isAboveLarge = useMediaQuery("(min-width: 1060px)");
+  const isMobile = useMediaQuery("(max-width: 640px)");
+  const url = isMobile ? 'https://wa.me/1757423470' : 'https://web.whatsapp.com/send?phone=01757423470';
   const downLoadCV = () => {
     fetch('Md Amdadul Haque.pdf').then(response => {
       response.blob().then(blob => {
@@ -28,12 +33,12 @@ const Landing = ({ setSelectedPage }) => {
       <div className="basis-3/5 z-10 mt-16 md:mt-32 flex justify-center md:order-2">
         {isAboveLarge ? (
           <div
-            className="relative z-0 ml-20 before:absolute before:-top-20 before:-left-20 before:rounded-t-[400px]
-            before:w-full before:max-w-[400px] md:before:max-w-[600px] before:h-full before:border-2 before:border-blue before:z-[-1]"
+            className="relative z-0 ml-10 before:absolute before:-top-10 before:-left-10 before:rounded-t-[300px]
+            before:w-full before:max-w-[400px] md:before:max-w-[500px] before:h-full before:border-2 before:border-blue before:z-[-1]"
           >
             <img
               alt="profile"
-              className="hover:filter hover:saturate-200 transition duration-500 z-10 w-full max-w-[400px] md:max-w-[600px]"
+              className="hover:filter hover:saturate-200 transition duration-500 z-10 w-full max-w-[400px] md:max-w-[500px]"
               src="assets/profile-image2.png"
             />
           </div>
@@ -59,17 +64,18 @@ const Landing = ({ setSelectedPage }) => {
             visible: { opacity: 1, x: 0 },
           }}
         >
-          <p className="text-6xl font-playfair z-10 text-center md:text-start">
-            Amdadul {""}
+          <p className="text-5xl font-playfair z-10 text-center md:text-start">
+            Md Amdadul {""}
             <span
               className="xs:relative xs:text-deep-blue xs:font-semibold z-20 xs:before:content-brush
               before:absolute before:-left-[25px] before:-top-[70px] before:z-[-1]"
             >
               Haque
             </span>
+
           </p>
 
-          <p className="mt-10 mb-7 text-sm text-center md:text-start">
+          <p className="mt-10 mb-7 text-[18px] text-center md:text-start">
             Experienced React Developer with a passion for creating dynamic and responsive web applications.
           </p>
         </motion.div>
@@ -101,7 +107,7 @@ const Landing = ({ setSelectedPage }) => {
           >
             Download  CV
           </button>
-          <AnchorLink
+          <a
             className="rounded-r-sm bg-gradient-rainblue py-0.5 pr-0.5"
             onClick={() => setSelectedPage("contact")}
             href="#contact"
@@ -109,9 +115,28 @@ const Landing = ({ setSelectedPage }) => {
             <div className="bg-deep-blue hover:text-red transition duration-500 w-full h-full flex items-center justify-center px-10 font-playfair">
               Let's talk.
             </div>
-          </AnchorLink>
+
+          </a>
         </motion.div>
 
+        <motion.div
+          className="flex flex-col gap-3 mt-5 justify-center md:justify-start"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.5 }}
+          transition={{ delay: 0.4, duration: 0.5 }}
+          variants={{
+            hidden: { opacity: 0, x: -50 },
+            visible: { opacity: 1, x: 0 },
+          }}
+        >
+          <a href={url} target="_blank" className="flex items-center gap-3 text-[18px] hover:text-green-500">
+            <BsWhatsapp className="text-[20px]" /> 01757423470
+          </a>
+          <a href="mailto:amdadul1807107@gmail.com" className="flex items-center gap-3 text-[18px] hover:text-yellow">
+            <IoMailOpenOutline className="text-[20px]" /> amdadul1807107@gmail.com
+          </a>
+        </motion.div>
         <motion.div
           className="flex mt-5 justify-center md:justify-start"
           initial="hidden"
@@ -126,7 +151,7 @@ const Landing = ({ setSelectedPage }) => {
           <SocialMediaIcons />
         </motion.div>
       </div>
-    </section>
+    </section >
   );
 };
 

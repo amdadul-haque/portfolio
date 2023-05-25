@@ -18,7 +18,7 @@ const Contact = () => {
   };
 
   return (
-    <section id="contact" className="contact py-48">
+    <section id="contact" className=" py-4">
       {/* HEADINGS */}
       <motion.div
         initial="hidden"
@@ -42,7 +42,7 @@ const Contact = () => {
       </motion.div>
 
       {/* FORM & IMAGE */}
-      <div className="md:flex md:justify-between gap-16 mt-5">
+      <div className="md:flex md:justify-between md:items-center gap-16 mt-5">
         <motion.div
           initial="hidden"
           whileInView="visible"
@@ -52,9 +52,9 @@ const Contact = () => {
             hidden: { opacity: 0, y: 50 },
             visible: { opacity: 1, y: 0 },
           }}
-          className="basis-1/2 flex justify-center"
+          className="basis-1/2 flex justify-center  max-h-full "
         >
-          <img src="../assets/contact-image.jpeg" alt="contact" />
+          <img src="../assets/contact-image.jpg" className="scale-90 w-full" alt="contact" />
         </motion.div>
 
         <motion.div
@@ -71,7 +71,7 @@ const Contact = () => {
           <form
             target="_blank"
             onSubmit={onSubmit}
-            action="https://formsubmit.co/amdADUL1807107@gmail.com"
+            action="https://formsubmit.co/amdadul1807107@gmail.com"
             method="POST"
           >
             <input
